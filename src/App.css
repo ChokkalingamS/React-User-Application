@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+.link
+{
+  color: white;
+  text-decoration: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.addUser
+{
+  display: flex;
+  height:25rem;
+  gap: 4rem;
+  padding:3rem 1rem 2rem 2rem;
+  border-radius: 5px;
+  width:50rem;
+  /* align-items: center; */
+  margin:3rem auto 0  auto ;
+  /* justify-content:space-evenly; */
+  /* margin-top:6rem !important; */
+
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+legend
+{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+}
+ label
+{
+  font-weight:500;
+  font-family: 'Roboto', sans-serif;
+  width:6rem;
+}
+span
+{
+    color: crimson;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.inputfield-container
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap:1rem;
+}
+.profilepic-container
+{
+  display: flex;
+  align-items: center;
+  /* justify-content: space-evenly; */
+  gap:1rem;
+  height: 5.5rem;
+}
+.emailfield-container
+{
+  display: flex;
+  align-items: center;
+  /* justify-content: space-evenly; */
+  gap:1rem;
+  margin-top: -1rem;
+  
+}
+.button-grp-container
+{
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  gap:1rem;
+}
+
+.col1
+{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap:3rem;
+}
+.col2
+{
+  display: flex;
+  flex-direction: column;
+  margin-top: -1.25rem;
+  gap:3rem;
 }
 
-.App-link {
-  color: #61dafb;
+.col1 label
+{
+  width: 5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputfield1
+{
+  width:14rem;
+  margin-left: -1rem !important;
+}
+
+.inputfield2
+{
+  margin-left:1rem !important;
+}
+
+.input-date-field
+{
+  margin-left: -1.2rem !important;
+}
+
+.add-button
+{
+  width: 8rem !important;
+  margin-left:7rem !important;
+  margin-top:2rem !important;
+}
+
+.profilepic
+{
+  height:5rem;
+  width:5rem;
+  margin-left: 0.75rem;
+  margin-bottom: 0;
+}
+
+#addprogress
+{
+  position: absolute;
+  margin-top:11rem !important;
+  margin-left:40rem !important;
+}
+
+#table
+{
+  width:70rem;
+  height: fit-content;
+  margin: 4rem auto;
 }
