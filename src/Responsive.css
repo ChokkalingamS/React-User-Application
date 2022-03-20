@@ -85,14 +85,13 @@
     .tab-content
     {
         display: flex;
-        gap:2rem
+        gap:1rem
     }
-    .features
+    .tab-feature
     {
         display: flex;
         align-items: center;
-        margin-top:10rem !important;
-        /* gap: 2rem; */
+        gap: 2rem;
     }
     .features
     {

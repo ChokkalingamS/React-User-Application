@@ -65,23 +65,18 @@ function Edit({ userData }) {
   const handleClick = () => { setOpen(true); };
   const handleClose = () => { setOpen(false); };
 
-// console.log(userData);
-
-  // var binaryData = [];
-  // binaryData.push(pic);
 
 
   const [FullName, setFullName] = useState(userData.FullName);
   const [country, setCountry] = useState(userData.country);
   const [Mobile, setMobile] = useState(userData.Mobile);
   const [JobType, setJobType] = useState(userData.JobType);
-  // const [ProfilePic, setProfilePic] = useState(window.URL.createObjectURL(new Blob(binaryData, { type: "application/zip" })));
-  const [ProfilePic, setProfilePic] = useState(userData.ProfilePic);
+  const [ProfilePic, setProfilePic] = useState('')
   const [Email, setEmail] = useState(userData.Email);
   const [DOB, setDOB] = useState(userData.DOB);
 
   const {PreferredLocation}=userData;
-  console.log(ProfilePic);
+  
 
   const [Location1,setLocation1]=useState(false)
   const [Location2,setLocation2]=useState(false)
