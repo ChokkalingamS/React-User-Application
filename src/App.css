@@ -58,7 +58,6 @@ span
 {
   display: flex;
   align-items: center;
-  /* justify-content: space-evenly; */
   gap:1rem;
   margin-top: -1rem;
   
@@ -67,7 +66,6 @@ span
 {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   gap:1rem;
 }
 

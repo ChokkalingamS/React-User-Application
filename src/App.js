@@ -25,17 +25,14 @@ function Container()
       return <div className='container'>
         <NavBar/>
             <Switch>
-                    
-                    
                     <Route exact  path='/adduser'><AddUser/></Route>
                     <Route exact  path='/edituser/:id'><GetUser/></Route>
                     <Route exact  path='/'><Home/></Route>
-                    
             </Switch>
       </div>
 }
 
-
+// Nav Bar
 function NavBar()
 {
    return   <Box sx={{ flexGrow: 1 }}>

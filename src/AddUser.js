@@ -61,7 +61,6 @@ export function AddUser() {
       loc.push({location:'Pune',checked:true})
   }
 
-  console.log(loc);
 
   const data = { FullName, Mobile, country, JobType, PreferredLocation:loc, ProfilePic, Email, DOB };
 

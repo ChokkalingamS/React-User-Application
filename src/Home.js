@@ -26,7 +26,7 @@ import { url } from './App';
 
 export function Home() {
 
-  const [rows, setRows] = useState('');
+  const [rows, setRows] = useState(''); // table rows
 
   const [progress, setProgress] = useState(0); // Progress Bar
   // Snackbar 
@@ -41,7 +41,7 @@ export function Home() {
   const handleClick = () => { setOpen(true); };
   const handleClose = () => { setOpen(false); };
 
-
+  // Userlist
   const getTableData = () => {
     setProgress(1)
     axios(
@@ -54,6 +54,7 @@ export function Home() {
   useEffect(getTableData, [setRows]);
 
 
+  // Delete User
   const removeUser = (id) => {
     axios(
       {
@@ -85,12 +86,9 @@ export function Home() {
     </Stack>
 
   </div>;
-
-
-
-
-
 }
+
+// Desktop Version
 
 function TableView({rows,removeUser})
 {
@@ -128,6 +126,7 @@ function TableView({rows,removeUser})
 
 }
 
+// Features->Edit,Delete
 function Features({ id, removeUser,show }) {
 
   let history = useHistory();
@@ -146,6 +145,7 @@ function Features({ id, removeUser,show }) {
 }
 
 
+// Mobile Version
 
 function Tab({rows,removeUser})
 {

@@ -24,6 +24,7 @@ export function GetUser() {
   const [data, setData] = useState('');
   const [progress, setProgress] = useState(0); // Progress Bar
 
+  // data fetched based on user id
   const GetUserData = () => {
     setProgress(1)
     axios(
@@ -37,6 +38,7 @@ export function GetUser() {
 
 
   return <div className='editUser'>
+    {/* After the data is fetched Edit Component will be rendered */}
     {(Object.keys(data).length) ? <div><Edit userData={data} /></div> :(progress === 1) && <CircularProgress id='addprogress' color='success'></CircularProgress>}
   </div>;
 }
@@ -63,22 +65,24 @@ function Edit({ userData }) {
   const handleClick = () => { setOpen(true); };
   const handleClose = () => { setOpen(false); };
 
-console.log(userData);
+// console.log(userData);
 
   let { ProfilePic: pic } = userData;
-  var binaryData = [];
-  binaryData.push(pic);
+  // var binaryData = [];
+  // binaryData.push(pic);
 
 
   const [FullName, setFullName] = useState(userData.FullName);
   const [country, setCountry] = useState(userData.country);
   const [Mobile, setMobile] = useState(userData.Mobile);
   const [JobType, setJobType] = useState(userData.JobType);
-  const [ProfilePic, setProfilePic] = useState(window.URL.createObjectURL(new Blob(binaryData, { type: "application/zip" })));
+  // const [ProfilePic, setProfilePic] = useState(window.URL.createObjectURL(new Blob(binaryData, { type: "application/zip" })));
+  const [ProfilePic, setProfilePic] = useState(userData.ProfilePic);
   const [Email, setEmail] = useState(userData.Email);
   const [DOB, setDOB] = useState(userData.DOB);
 
   const {PreferredLocation}=userData;
+  console.log(ProfilePic);
 
   const [Location1,setLocation1]=useState(false)
   const [Location2,setLocation2]=useState(false)
@@ -123,6 +127,7 @@ console.log(userData);
 
   const data = { FullName, Mobile, country, JobType, PreferredLocation:loc, ProfilePic, OldEmail: Email, NewEmail: Email, DOB };
 
+  // Update User
   const updataData = (data) => {
     setProgress(1);
     axios(
