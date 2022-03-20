@@ -68,6 +68,7 @@
   }
   .tab-content {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
   .tab-feature {
