@@ -1,166 +1,139 @@
-.link
-{
+.link {
   color: white;
   text-decoration: none;
 }
 
-.addUser
-{
+.addUser {
   display: flex;
-  height:25rem;
+  height: 25rem;
   gap: 4rem;
-  padding:3rem 1rem 2rem 2rem;
+  padding: 3rem 1rem 2rem 2rem;
   border-radius: 5px;
-  width:50rem;
-  margin:3rem auto 0  auto ;
+  width: 50rem;
+  margin: 3rem auto 0 auto;
 }
 
-legend
-{
-  font-family: 'Roboto', sans-serif;
+legend {
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   padding-left: 0.25rem;
   padding-right: 0.5rem;
 }
- label
-{
-  font-weight:500;
-  font-family: 'Roboto', sans-serif;
-  width:6rem;
+label {
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  width: 6rem;
 }
-span
-{
-    color: crimson;
+span {
+  color: crimson;
 }
 
-.inputfield-container
-{
+.inputfield-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap:1rem;
+  gap: 1rem;
 }
-.profilepic-container
-{
+.profilepic-container {
   display: flex;
   align-items: center;
   /* justify-content: space-evenly; */
-  gap:1rem;
+  gap: 1rem;
   height: 5.5rem;
 }
 
-.mobile-num-container
-    {
-        width:5rem !important;
-         margin-left:-1rem !important;
-    }
-.emailfield-container
-{
-  display: flex;
-  align-items: center;
-  gap:1rem;
-  margin-top: -1rem;
-  
+.mobile-num-container {
+  width: 5rem !important;
+  margin-left: -1rem !important;
 }
-.button-grp-container
-{
+.emailfield-container {
   display: flex;
   align-items: center;
-  gap:1rem;
+  gap: 1rem;
+  margin-top: -1rem;
+}
+.button-grp-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.col1
-{
+.col1 {
   display: flex;
   flex-direction: column;
-  gap:3rem;
+  gap: 3rem;
 }
-.col2
-{
+.col2 {
   display: flex;
   flex-direction: column;
   margin-top: -1.25rem;
-  gap:3rem;
+  gap: 3rem;
 }
 
-.col1 label
-{
+.col1 label {
   width: 5rem;
 }
 
-.inputfield1
-{
-  width:14rem;
+.inputfield1 {
+  width: 14rem;
   margin-left: -1rem !important;
 }
 
-.inputfield2
-{
-  margin-left:1rem !important;
+.inputfield2 {
+  margin-left: 1rem !important;
 }
 
-.input-date-field
-{
+.input-date-field {
   margin-left: -1.2rem !important;
 }
 
-.add-button
-{
+.add-button {
   width: 8rem !important;
-  margin-left:7rem !important;
-  margin-top:2rem !important;
+  margin-left: 7rem !important;
+  margin-top: 2rem !important;
 }
-.update-button
-{
+.update-button {
   margin-left: 4rem !important;
   margin-top: 2.2rem !important;
 }
-.cancel-button
-{
+.cancel-button {
   width: 8rem !important;
-  margin-top:2rem !important;
+  margin-top: 2rem !important;
 }
 
-
-.profilepic
-{
-  height:5rem;
-  width:5rem;
+.profilepic {
+  height: 5rem;
+  width: 5rem;
   margin-left: 0.75rem;
   margin-bottom: 0;
 }
 
-.userpic
-{
-  height:3rem;
+.userpic {
+  height: 3rem;
   width: 3rem;
   overflow: hidden;
-  border-radius: 4px; 
+  border-radius: 4px;
 }
 
-#addprogress,#tab-progress
-{
+#addprogress,
+#tab-progress {
   position: absolute;
-  margin-top:11rem !important;
-  margin-left:40rem !important;
+  margin-top: 11rem !important;
+  margin-left: 40rem !important;
 }
 
-#table
-{
-  width:70rem;
+#table {
+  width: 70rem;
   height: fit-content;
   margin: 4rem auto;
 }
 
-.FT-button
-{
-  width:4rem !important;
+.FT-button {
+  width: 4rem !important;
 }
-.PT-button
-{
+.PT-button {
   width: 5rem !important;
 }
-.tab
-{
+.tab {
   display: none;
 }
