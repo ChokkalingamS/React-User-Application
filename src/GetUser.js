@@ -22,20 +22,22 @@ export function GetUser() {
 
   const { id } = useParams();
   const [data, setData] = useState('');
+  const [progress, setProgress] = useState(0); // Progress Bar
 
   const GetUserData = () => {
+    setProgress(1)
     axios(
       {
         url: `${url}/getuserbyid/${id}`,
         method: 'GET',
-      }).then(response => response.data).then(data => setData(data)).catch();
+      }).then(response => response.data).then(data => {setData(data);setProgress(0)}).catch();
   };
 
   useEffect(GetUserData, [setData,id]);
 
 
   return <div className='editUser'>
-    {(Object.keys(data).length) ? <div><Edit userData={data} /></div> : <div>User Not Found</div>}
+    {(Object.keys(data).length) ? <div><Edit userData={data} /></div> :(progress === 1) && <CircularProgress id='addprogress' color='success'></CircularProgress>}
   </div>;
 }
 
@@ -61,31 +63,65 @@ function Edit({ userData }) {
   const handleClick = () => { setOpen(true); };
   const handleClose = () => { setOpen(false); };
 
-
+console.log(userData);
 
   let { ProfilePic: pic } = userData;
   var binaryData = [];
   binaryData.push(pic);
 
 
-
-  
-  const arr = userData.Mobile.split(' ');
-
   const [FullName, setFullName] = useState(userData.FullName);
-  const [country, setCountry] = useState(arr[0]);
-  const [Mobile, setMobile] = useState(arr[1]);
+  const [country, setCountry] = useState(userData.country);
+  const [Mobile, setMobile] = useState(userData.Mobile);
   const [JobType, setJobType] = useState(userData.JobType);
-  const [PreferredLocation, setPreferredLocation] = useState((userData.PreferredLocation) ? true : false);
   const [ProfilePic, setProfilePic] = useState(window.URL.createObjectURL(new Blob(binaryData, { type: "application/zip" })));
   const [Email, setEmail] = useState(userData.Email);
   const [DOB, setDOB] = useState(userData.DOB);
+
+  const {PreferredLocation}=userData;
+
+  const [Location1,setLocation1]=useState(false)
+  const [Location2,setLocation2]=useState(false)
+  const [Location3,setLocation3]=useState(false)
+  
+  const setLocation=()=>{
+        const {PreferredLocation}=userData;
+
+       let loc1=PreferredLocation.filter(({location})=>location==='Chennai')
+       if(loc1.length)
+       {
+           setLocation1(true)
+       }
+       let loc2=PreferredLocation.filter(({location})=>location==='Bangalore')
+       if(loc2.length)
+       {
+           setLocation2(true)
+       } let loc3=PreferredLocation.filter(({location})=>location==='Pune')
+       if(loc3.length)
+       {
+           setLocation3(true)
+       }
+  }
+
+    useEffect(setLocation,[PreferredLocation,userData])
+
   
 
+  var loc=[]
+  if(Location1)
+  {
+    loc.push({location:'Chennai',checked:true})
+  }
+  if(Location2)
+  {
+      loc.push({location:'Bangalore',checked:true})
+  }
+  if(Location3)
+  {
+      loc.push({location:'Pune',checked:true})
+  }
 
-
-  const data = { FullName, Mobile: `${country} ${Mobile}`, country, JobType, PreferredLocation: (PreferredLocation) ? 'Chennai' : '', ProfilePic, OldEmail: Email, NewEmail: Email, DOB };
-
+  const data = { FullName, Mobile, country, JobType, PreferredLocation:loc, ProfilePic, OldEmail: Email, NewEmail: Email, DOB };
 
   const updataData = (data) => {
     setProgress(1);
@@ -109,7 +145,7 @@ function Edit({ userData }) {
   return <div>
     {(progress === 1) && <CircularProgress id='addprogress' color='success'></CircularProgress>}
     <fieldset className='addUser'>
-      <legend>Edit</legend>
+      <legend>Update</legend>
       <div className='col1'>
         <div className='inputfield-container'>
           <label>Full Name<span>*</span></label>
@@ -119,7 +155,7 @@ function Edit({ userData }) {
         <div className='inputfield-container'>
           <label>Mobile<span>*</span></label>
 
-          <FormControl style={{ width: '5rem', marginLeft: '1rem' }}>
+          <FormControl  className='mobile-num-container'>
             <InputLabel id="demo-simple-select-standard-label">Code</InputLabel>
             <Select
               labelId="demo-simple-select-standard-label"
@@ -131,7 +167,8 @@ function Edit({ userData }) {
               {countryCode.map((arr, i) => { return <MenuItem key={i} value={arr.code}>{arr.code}</MenuItem>; })}
             </Select>
           </FormControl>
-          <TextField type="tel" value={Mobile} onChange={(e) => setMobile(e.target.value)} style={{ width: '8rem', marginLeft: '-1rem' }} className='inputfield' variant='outlined' /><br />
+          <TextField type="tel" value={Mobile} onChange={(e) => setMobile(e.target.value)} style={{ width: '8rem', marginLeft: '-1rem' }} className='mobileinputfield' variant='outlined' /><br />
+
 
 
         </div>
@@ -139,16 +176,26 @@ function Edit({ userData }) {
         <div className='button-grp-container'>
           <label>Job Type<span>*</span></label>
           <ToggleButtonGroup color='primary' onChange={(e, value) => setJobType(value)} value={JobType} exclusive aria-label="outlined button group">
-            <ToggleButton value='FT'>FT</ToggleButton>
-            <ToggleButton value='PT'>PT</ToggleButton>
-            <ToggleButton value='Consultant'>Consultant</ToggleButton>
+          <ToggleButton value='FT' className='FT-button' >FT</ToggleButton>
+            <ToggleButton value='PT' className='PT-button'>PT</ToggleButton>
+            <ToggleButton value='Consultant' className='Consultant-button'>Consultant</ToggleButton>
           </ToggleButtonGroup><br />
         </div>
 
         <div className='inputfield-checkbox-container'>
-          <label>Preferred Location</label>
-          <Checkbox checked={(PreferredLocation) ? true : false} color="primary" onChange={(e) => setPreferredLocation(e.target.checked)} />
-          <label>Chennai</label><br />
+          <label>Preferred Location</label><br/>
+         
+         <div>
+          <Checkbox color="primary"checked={Location1} onChange={(e) => setLocation1(e.target.checked)} />
+          <label>Chennai</label>
+          
+          <Checkbox color="primary" checked={Location2}onChange={(e) => setLocation2(e.target.checked)} />
+          <label>Bangalore</label>
+          
+          <Checkbox color="primary" checked={Location3}onChange={(e) => setLocation3(e.target.checked)} />
+          <label>Pune</label>
+          </div>
+
         </div>
       </div>
 
@@ -174,15 +221,19 @@ function Edit({ userData }) {
 
         <div className='emailfield-container'>
           <label>Email Id<span>*</span></label>
-          <TextField type="email" value={Email} onChange={(e) => setEmail(e.target.value)} className='inputfield' variant='outlined' /><br />
+          <TextField type="email" value={Email} onChange={(e) => setEmail(e.target.value)} className='emailinputfield' variant='outlined' /><br />
         </div>
 
         <div className='inputfield-container'>
           <label>DOB<span>*</span></label>
           <TextField type="date" value={DOB} onChange={(e) => setDOB(e.target.value)} className='input-date-field' variant='outlined' /><br />
         </div>
+        
+        <div className='button-container'>
+        <Button variant='contained' color='error' onClick={()=>history.push('/')} className='cancel-button'>Cancel</Button>
+        <Button variant='contained' onClick={() => updataData(data)} type='submit' className='update-button'>Update</Button>
+        </div>
 
-        <Button variant='contained' onClick={() => updataData(data)} type='submit' className='add-button'>Update</Button>
       </div>
 
 

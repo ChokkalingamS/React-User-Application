@@ -12,12 +12,7 @@
   padding:3rem 1rem 2rem 2rem;
   border-radius: 5px;
   width:50rem;
-  /* align-items: center; */
   margin:3rem auto 0  auto ;
-  /* justify-content:space-evenly; */
-  /* margin-top:6rem !important; */
-
-  
 }
 
 legend
@@ -53,6 +48,12 @@ span
   gap:1rem;
   height: 5.5rem;
 }
+
+.mobile-num-container
+    {
+        width:5rem !important;
+         margin-left:-1rem !important;
+    }
 .emailfield-container
 {
   display: flex;
@@ -111,6 +112,17 @@ span
   margin-left:7rem !important;
   margin-top:2rem !important;
 }
+.update-button
+{
+  margin-left: 4rem !important;
+  margin-top: 2.2rem !important;
+}
+.cancel-button
+{
+  width: 8rem !important;
+  margin-top:2rem !important;
+}
+
 
 .profilepic
 {
@@ -120,7 +132,7 @@ span
   margin-bottom: 0;
 }
 
-#addprogress
+#addprogress,#tab-progress
 {
   position: absolute;
   margin-top:11rem !important;
@@ -132,4 +144,17 @@ span
   width:70rem;
   height: fit-content;
   margin: 4rem auto;
+}
+
+.FT-button
+{
+  width:4rem !important;
+}
+.PT-button
+{
+  width: 5rem !important;
+}
+.tab
+{
+  display: none;
 }

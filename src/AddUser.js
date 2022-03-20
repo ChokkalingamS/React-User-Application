@@ -23,10 +23,13 @@ export function AddUser() {
   const [country, setCountry] = useState('');
   const [Mobile, setMobile] = useState('');
   const [JobType, setJobType] = useState('');
-  const [PreferredLocation, setPreferredLocation] = useState('');
   const [ProfilePic, setProfilePic] = useState('');
   const [Email, setEmail] = useState('');
   const [DOB, setDOB] = useState('');
+
+  const [Location1,setLocation1]=useState(false)
+  const [Location2,setLocation2]=useState(false)
+  const [Location3,setLocation3]=useState(false)
 
 
   let history = useHistory();
@@ -44,10 +47,23 @@ export function AddUser() {
   const handleClick = () => { setOpen(true); };
   const handleClose = () => { setOpen(false); };
 
+  var loc=[]
+  if(Location1)
+  {
+    loc.push({location:'Chennai',checked:true})
+  }
+  if(Location2)
+  {
+      loc.push({location:'Bangalore',checked:true})
+  }
+  if(Location3)
+  {
+      loc.push({location:'Pune',checked:true})
+  }
 
+  console.log(loc);
 
-
-  const data = { FullName, Mobile: `${country} ${Mobile}`, country, JobType, PreferredLocation: (PreferredLocation) ? 'Chennai' : '', ProfilePic, Email, DOB };
+  const data = { FullName, Mobile, country, JobType, PreferredLocation:loc, ProfilePic, Email, DOB };
 
 
   const storeData = (data) => {
@@ -87,7 +103,7 @@ export function AddUser() {
         <div className='inputfield-container'>
           <label>Mobile<span>*</span></label>
 
-          <FormControl style={{ width: '5rem', marginLeft: '-1rem' }}>
+          <FormControl  className='mobile-num-container'>
             <InputLabel id="demo-simple-select-standard-label">Code</InputLabel>
             <Select
               labelId="demo-simple-select-standard-label"
@@ -99,7 +115,7 @@ export function AddUser() {
               {countryCode.map((arr, i) => { return <MenuItem key={i} value={arr.code}>{arr.code}</MenuItem>; })}
             </Select>
           </FormControl>
-          <TextField type="tel" onChange={(e) => setMobile(e.target.value)} style={{ width: '8rem', marginLeft: '-1rem' }} className='inputfield' variant='outlined' /><br />
+          <TextField type="tel" onChange={(e) => setMobile(e.target.value)} style={{ width: '8rem', marginLeft: '-1rem' }} className='mobileinputfield' variant='outlined' /><br />
 
 
         </div>
@@ -107,16 +123,27 @@ export function AddUser() {
         <div className='button-grp-container'>
           <label>Job Type<span>*</span></label>
           <ToggleButtonGroup color='primary' onChange={(e, value) => setJobType(value)} value={JobType} exclusive aria-label="outlined button group">
-            <ToggleButton value='FT' style={{ width: '4rem' }}>FT</ToggleButton>
-            <ToggleButton value='PT' style={{ width: '5rem' }}>PT</ToggleButton>
-            <ToggleButton value='Consultant'>Consultant</ToggleButton>
+            <ToggleButton value='FT' className='FT-button' >FT</ToggleButton>
+            <ToggleButton value='PT' className='PT-button'>PT</ToggleButton>
+            <ToggleButton value='Consultant' className='Consultant-button'>Consultant</ToggleButton>
           </ToggleButtonGroup><br />
         </div>
 
         <div className='inputfield-checkbox-container'>
-          <label>Preferred Location</label>
-          <Checkbox color="primary" onChange={(e) => setPreferredLocation(e.target.checked)} />
-          <label>Chennai</label><br />
+          <label>Preferred Location</label><br/>
+
+            <div>
+          <Checkbox color="primary" onChange={(e) => setLocation1(e.target.checked)} />
+          <label>Chennai</label>
+          
+          <Checkbox color="primary" onChange={(e) => setLocation2(e.target.checked)} />
+          <label>Bangalore</label>
+          
+          <Checkbox color="primary" onChange={(e) => setLocation3(e.target.checked)} />
+          <label>Pune</label>
+          </div>
+          
+          <br />
         </div>
       </div>
 
@@ -142,7 +169,7 @@ export function AddUser() {
 
         <div className='emailfield-container'>
           <label>Email Id<span>*</span></label>
-          <TextField type="email" onChange={(e) => setEmail(e.target.value)} className='inputfield' variant='outlined' /><br />
+          <TextField type="email" onChange={(e) => setEmail(e.target.value)} className='emailinputfield' variant='outlined' /><br />
         </div>
 
         <div className='inputfield-container'>
