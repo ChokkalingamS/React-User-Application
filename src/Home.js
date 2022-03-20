@@ -96,6 +96,7 @@ function TableView({rows,removeUser})
       <Table sx={{ minWidth: 400 }} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell align="center">Profile</TableCell>
             <TableCell align="center">Name</TableCell>
             <TableCell align="center">Email</TableCell>
             <TableCell align="center">Mobile</TableCell>
@@ -105,12 +106,12 @@ function TableView({rows,removeUser})
           </TableRow>
         </TableHead>
         <TableBody>
-          {(rows.map(({ FullName, Email, Mobile, DOB, JobType, _id }) => {
+          {(rows.map(({ FullName, Email, Mobile, DOB, JobType, _id,ProfilePic }) => {
             return (
               //  Table row : Individual user data 
               <TableRow className="userdata" key={_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                {/* <TableCell component="th" scope="row" align="center" > */}
-                {/* <img className="userpic" src={Avatar} alt={Name}></img></TableCell> */}
+                <TableCell component="th" scope="row" align="center" >
+                <img className="userpic" src={ProfilePic} alt={FullName}></img></TableCell>
                 <TableCell align="center"> <p className="username">{FullName}   </p></TableCell>
                 <TableCell align="center"> <p className="userphnno">{Email} </p></TableCell>
                 <TableCell align="center"> <p className="usermail">{Mobile}    </p></TableCell>

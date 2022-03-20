@@ -130,6 +130,14 @@ span
   margin-bottom: 0;
 }
 
+.userpic
+{
+  height:3rem;
+  width: 3rem;
+  overflow: hidden;
+  border-radius: 4px; 
+}
+
 #addprogress,#tab-progress
 {
   position: absolute;
