@@ -67,7 +67,6 @@ function Edit({ userData }) {
 
 // console.log(userData);
 
-  let { ProfilePic: pic } = userData;
   // var binaryData = [];
   // binaryData.push(pic);
 
