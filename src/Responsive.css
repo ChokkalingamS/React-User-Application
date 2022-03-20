@@ -85,14 +85,14 @@
     .tab-content
     {
         display: flex;
-        flex-direction: column;
-        gap:1rem
+        gap:2rem
     }
-    .tab-feature
+    .features
     {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        margin-top:10rem !important;
+        /* gap: 2rem; */
     }
     .features
     {
@@ -133,4 +133,10 @@
         position: absolute;
     }
 
+    .tab-pic
+    {
+        width: 6rem;
+        height: 6rem;
+    }
+   
 }

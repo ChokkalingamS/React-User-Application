@@ -151,18 +151,25 @@ function Features({ id, removeUser,show }) {
 function Tab({rows,removeUser})
 {
     return <div className='tab'>
-         {rows.map(({FullName, Email, Mobile, DOB, JobType, _id})=>{ return  <Accordion>
+         {rows.map(({FullName, Email, Mobile, DOB, JobType, _id,ProfilePic})=>{ return  <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
           <Typography variant="h6">{FullName}</Typography>
         </AccordionSummary>
 
         <AccordionDetails className='tab-content'>
+        <div>
         <Typography className='tab-item' variant="subtitle1"><span>Email</span>  {Email}</Typography>
         <Typography className='tab-item' variant="subtitle1"><span>Mobile</span>{Mobile}</Typography>
           <Typography className='tab-item' variant="subtitle1"><span>DOB</span>{DOB}</Typography>
-          <div className='tab-feature'>
+          
           <Typography className='tab-item' variant="subtitle1"><span>JobType</span>{JobType}</Typography>
+          </div>
+          <div>
+            <img src={ProfilePic} alt={FullName} className='tab-pic'/>
+            <div className='tab-feature'>
           <Features id={_id} removeUser={removeUser} show={true}/>
+          </div>
+          
           </div>
         </AccordionDetails>
 
